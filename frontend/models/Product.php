@@ -33,6 +33,18 @@ class Product extends \yii\db\ActiveRecord
             [['name'], 'string'],
         ];
     }
+/*
+    public function getParametrProduct()
+    {
+        return $this->hasMany(ParametrProduct::className(), ['parametr_id' => 'id']);
+    }*/
+
+    public function getParametrs()
+    {
+        return $this->hasMany(Parametr::className(), ['id' => 'parametr_id'])
+            ->viaTable('parametr_product',['product_id'=>'id']);
+//        return $this->hasMany(ParametrProduct::className(), ['parametr_id' => 'id']);
+    }
 
     /**
      * {@inheritdoc}

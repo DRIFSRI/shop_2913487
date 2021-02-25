@@ -8,142 +8,73 @@ use app\models\Product;
 use app\models\ParametrProduct;
 use app\models\Parametr;
 use yii\data\ActiveDataProvider;
+use yii\db\Query;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
+
+
 
 /**
  * ProductController implements the CRUD actions for Product model.
  */
 class ProductController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
+    //Pattern PATTERN = Pattern.compile("[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,4}");
     /**
      * Lists all Product models.
      * @return mixed
      */
     public function actionIndex()
     {
-//        $dataProvider = new ActiveDataProvider([
-//            'query' => Product::find(),
-//        ]);
-//
-//        return $this->render('index', [
-//            'dataProvider' => $dataProvider,
-//        ]);
-
         $query = Product::find();
 
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 6,
             'totalCount' => $query->count(),
         ]);
 
-        $countries = $query->orderBy('name')
-            ->offset($pagination->offset)
-            ->limit($pagination->limit)
-            ->all();
+
+        $products = Product::find()->limit($pagination->limit)->offset($pagination->offset)->all();
 
 
-        return $this->render('index', [
-            'countries' => $countries,
+        return $this->render('ActiveRecord', [
+            'products' => $products,
             'pagination' => $pagination,
         ]);
     }
 
-    /**
-     * Displays a single Product model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id)
+    private function ActiveRecord()
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $products = Product::find()->limit($pagination->limit)->offset($pagination->offset)->all();
+
+        return $this->render('ActiveRecord', [
+            'products' => $products,
+            'pagination' => $pagination,
         ]);
     }
 
-    /**
-     * Creates a new Product model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
+    private function dao()
     {
-        $model = new Product();
+        //dao
+//        $subQuery = (new Query())->select('COUNT(*)')->from('parametr');
+//        $query = (new Query)->select(['id', 'count' => $subQuery])->from('product');
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
 
-        return $this->render('create', [
-            'model' => $model,
+        $products = (new \yii\db\Query())
+            ->select(['product.name', 'product.price', 'parametr.value'])
+            ->leftJoin('parametr_product', 'parametr_product.product_id=id')
+            ->leftJoin('parametr', 'parametr_product.parametr_id=parametr.id')
+            ->from('product')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->orderBy('name')
+            ->all();
+
+        return $this->render('index', [
+            'products' => $products,
+            'pagination' => $pagination,
         ]);
     }
 
-    /**
-     * Updates an existing Product model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Deletes an existing Product model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the Product model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return Product the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = Product::findOne($id)) !== null) {
-            return $model;
-        }
-
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
 }

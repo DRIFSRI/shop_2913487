@@ -30,6 +30,15 @@ class ParametrProduct extends \yii\db\ActiveRecord
             [['product_id', 'parametr_id'], 'integer'],
         ];
     }
+//*
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'product_id']);
+    }
+/*    public function getParametr()
+    {
+        return $this->hasMany(Parametr::className(), ['id' => 'parametr_id']);
+    }
 
     /**
      * {@inheritdoc}

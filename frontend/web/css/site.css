@@ -118,3 +118,35 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+.catalog_item
+{
+    display:flex;
+}
+.product_wrapp{
+    font-weight: normal;
+}
+.product_info{
+
+}
+.product_title{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*text-overflow: -o-ellipsis-lastline;*/
+    display: -webkit-box;
+    -webkit-line-clamp: 50;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+}
+.product_price{
+
+}
+.image_wrapper_block{
+    display: flex;
+    width: 0px;
+}
+.item.itemblock{
+    padding:0px;
+}
+.block{
+    /*display:block;*/
+}
