@@ -1,7 +1,5 @@
 <?php
-
 namespace frontend\controllers;
-// namespace app\controllers;
 
 use Yii;
 use app\models\Product;
@@ -13,14 +11,11 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
 
-
-
-/**
- * ProductController implements the CRUD actions for Product model.
- */
 class ProductController extends Controller
 {
-    //Pattern PATTERN = Pattern.compile("[A-Za-z0-9.%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,4}");
+    //Pattern PATTERN = Pattern.compile("[A-Za-z
+    //
+    //.%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3,4}");
     /**
      * Lists all Product models.
      * @return mixed
@@ -35,13 +30,22 @@ class ProductController extends Controller
         ]);
 
 
-        $products = Product::find()->limit($pagination->limit)->offset($pagination->offset)->all();
 
+        $products = Product::find()->limit($pagination->limit)->offset($pagination->offset)->all();
 
         return $this->render('ActiveRecord', [
             'products' => $products,
             'pagination' => $pagination,
         ]);
+    }
+
+    public function actionSearch($id)
+    {
+//        $product=Product::find()->where('id=1')->all();
+        $product = Product::findOne($id);
+
+//        var_dump($product);
+        return $this->render('ProductView',['product'=>$product]);
     }
 
     private function ActiveRecord()

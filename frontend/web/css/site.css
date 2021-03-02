@@ -142,11 +142,21 @@ a.desc:after {
 }
 .image_wrapper_block{
     display: flex;
-    width: 0px;
+    width: 100px;
 }
-.item.itemblock{
+.product_wrapp .img {
+    width: 100px;
+    height: 150px;
+}
+.item .itemblock{
     padding:0px;
 }
 .block{
-    /*display:block;*/
+    display:inline-block;
 }
+
+.demo>.product img
+{
+    height: 50px;
+}
+

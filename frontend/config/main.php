@@ -6,6 +6,9 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 );
 
+//echo '=<pre>', var_dump(1111), "</pre>=\n<br>";
+
+
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
@@ -44,13 +47,18 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
-//        'urlManager' => [
-//            'enablePrettyUrl' => true,
-//            'showScriptName' => false,
-//            'rules' => [
-//            ],
-//        ],
+//        'homeUrl' => '/',
+        'urlManager' => [
+            // указали используемый класс
+            'class' => 'yii\web\UrlManager',
+            // что хотим делать с классом, параметры
+            // ЧПУ
+            'enablePrettyUrl' => true,
+            //скрывать index.php
+            'showScriptName' => false,
+            'rules' => [
+            ],
+        ],
 
     ],
     'params' => $params,
