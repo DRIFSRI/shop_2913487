@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
 ?>
-    <?= \common\widgets\product_info::widget(['product'=>$product])  ?>
+<?= \common\widgets\product_info::widget(['product'=>$product])  ?>
 
 
 <?php

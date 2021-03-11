@@ -124,18 +124,20 @@ a.desc:after {
 }
 .product_wrapp{
     font-weight: normal;
+    width: 30%;
 }
 .product_info{
 
 }
 .product_title{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /*text-overflow: -o-ellipsis-lastline;*/
-    display: -webkit-box;
-    -webkit-line-clamp: 50;
-    -webkit-box-orient: vertical;
-    white-space: normal;
+
+    /*overflow: hidden;*/
+    /*text-overflow: ellipsis;*/
+    /*!*text-overflow: -o-ellipsis-lastline;*!*/
+    /*display: -webkit-box;*/
+    /*-webkit-line-clamp: 50;*/
+    /*-webkit-box-orient: vertical;*/
+    /*white-space: normal;*/
 }
 .product_price{
 

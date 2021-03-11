@@ -1,6 +1,6 @@
 <?php
-
 namespace common\widgets;
+
 
 
 use yii\base\Widget;
@@ -16,4 +16,5 @@ class product_info extends Widget
     {
         return $this->render("product_info",["product"=>$this->product]);
     }
+
 }

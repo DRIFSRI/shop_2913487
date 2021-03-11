@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Products;
 use Yii;
 use app\models\Product;
 use app\models\ParametrProduct;
@@ -22,7 +23,7 @@ class ProductController extends Controller
      */
     public function actionIndex()
     {
-        $query = Product::find();
+        $query = Products::find();
 
         $pagination = new Pagination([
             'defaultPageSize' => 6,
@@ -31,7 +32,7 @@ class ProductController extends Controller
 
 
 
-        $products = Product::find()->limit($pagination->limit)->offset($pagination->offset)->all();
+        $products = Products::find()->limit($pagination->limit)->offset($pagination->offset)->all();
 
         return $this->render('ActiveRecord', [
             'products' => $products,
@@ -42,7 +43,7 @@ class ProductController extends Controller
     public function actionSearch($id)
     {
 //        $product=Product::find()->where('id=1')->all();
-        $product = Product::findOne($id);
+        $product = Products::findOne($id);
 
 //        var_dump($product);
         return $this->render('ProductView',['product'=>$product]);
@@ -50,7 +51,7 @@ class ProductController extends Controller
 
     private function ActiveRecord()
     {
-        $products = Product::find()->limit($pagination->limit)->offset($pagination->offset)->all();
+        $products = Products::find()->limit($pagination->limit)->offset($pagination->offset)->all();
 
         return $this->render('ActiveRecord', [
             'products' => $products,
