@@ -6,18 +6,14 @@
  * Time: 19:18
  */
 namespace frontend\controllers;
-
 use app\models\Products;
 use yii\data\Pagination;
 use yii\web\Controller;
-
 class CatalogController extends Controller
 {
     public function actionIndex()
     {
         $query = Products::find();
-
-
         $pagination = new Pagination([
             'defaultPageSize' => 6,
             'totalCount' => $query->count(),
@@ -36,5 +32,4 @@ class CatalogController extends Controller
         $product = Products::findOne($id);
             return $this->render('ProductSearch',['product'=>$product]);
     }
-
 }

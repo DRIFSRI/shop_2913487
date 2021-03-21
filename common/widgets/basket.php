@@ -20,16 +20,12 @@ class basket extends Widget
     {
         $this->user_id=$user_id;
     }
-
-    //run
-
     /**
-     *
      * @return string
      */
     public function run()
     {
-        Baskets::findOne($this->    user_id);
-        return $this->render("basket",[]);
+        $basket = Baskets::findOne($this->user_id);
+        return $this->render("basket",['basket'=>$basket]);
     }
 }

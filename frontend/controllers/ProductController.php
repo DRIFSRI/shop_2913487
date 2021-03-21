@@ -24,16 +24,11 @@ class ProductController extends Controller
     public function actionIndex()
     {
         $query = Products::find();
-
         $pagination = new Pagination([
             'defaultPageSize' => 6,
             'totalCount' => $query->count(),
         ]);
-
-
-
         $products = Products::find()->limit($pagination->limit)->offset($pagination->offset)->all();
-
         return $this->render('ActiveRecord', [
             'products' => $products,
             'pagination' => $pagination,
@@ -44,7 +39,6 @@ class ProductController extends Controller
     {
 //        $product=Product::find()->where('id=1')->all();
         $product = Products::findOne($id);
-
 //        var_dump($product);
         return $this->render('ProductView',['product'=>$product]);
     }
@@ -61,11 +55,8 @@ class ProductController extends Controller
 
     private function dao()
     {
-        //dao
 //        $subQuery = (new Query())->select('COUNT(*)')->from('parametr');
 //        $query = (new Query)->select(['id', 'count' => $subQuery])->from('product');
-
-
         $products = (new \yii\db\Query())
             ->select(['product.name', 'product.price', 'parametr.value'])
             ->leftJoin('parametr_product', 'parametr_product.product_id=id')
@@ -75,7 +66,6 @@ class ProductController extends Controller
             ->limit($pagination->limit)
             ->orderBy('name')
             ->all();
-
         return $this->render('index', [
             'products' => $products,
             'pagination' => $pagination,

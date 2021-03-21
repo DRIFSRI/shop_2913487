@@ -13,6 +13,7 @@ use yii\base\Widget;
 
 class buy extends Widget
 {
+    var $id;
     public function init()
     {
     }
@@ -22,6 +23,6 @@ class buy extends Widget
      */
     public function run()
     {
-        return $this->render("buy",[]);
+        return $this->render("buttonBuy",['id'=>$this->id]);
     }
 }

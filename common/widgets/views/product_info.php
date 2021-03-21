@@ -9,4 +9,5 @@
         </div>
     </div>
 </div>
-<?= \common\widgets\buy::widget([]);?>
+
+<?= \common\widgets\buy::widget(['id' => $product->id]);?>
