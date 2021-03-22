@@ -2,7 +2,7 @@
 <div class="basket">
     <div class="basket_info">
         <div classs="basket_title">
-            <?="Корзина №".$basket->id?>
+            <?="Корзина №5".$basket->id?>
         </div>
         <div class="basket_list">
 

@@ -1,7 +1,7 @@
 <?php foreach ($products as $product): ?>
     <div class="product_wrapp block">
         <div class="image_wrapper_block" style="width: 1px">
-            <a href=<?="/catalog/search/?id=".$product->id?>>
+            <a href=<?="/catalog/".$product->id?>>
                 <img class="img" src=<?=$product->image?>>
             </a>
         </div>
@@ -13,28 +13,14 @@
                 <?="{$product->price}"?>
             </div>
         </div>
-        <?//= \common\widgets\buy::widget(['id'=>$product->id])?>
         <?= \yii\helpers\Html::button('В корзину',['class'=>'basket','data-id'=>$product->id]);?>
-        <div id="rrr-<?=$product->id?>"></div>
     </div>
 <?php endforeach;?>
 <?php
 $js = <<<JS
         
     $(function() {
-        // var list = $('button.basket')[1].dataset.name;
         var list = $('button.basket');
-        
-       
-         console.log('======>', list);
-        
-        for (obj of list) {
-            // console.log('======>', obj, obj.dataset);
-            $('div#rrr-' + obj.dataset.id).html('name-'+obj.dataset.id);
-            
-            
-        }
-        
         
         $(document).on('click', 'button.basket', function(){
             console.log('==this==', this.dataset.id);
@@ -54,10 +40,7 @@ $js = <<<JS
                 }
             })
         })
-        
-        
     });
-
 JS;
 
 $this->registerJs(

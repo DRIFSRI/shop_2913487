@@ -8,6 +8,8 @@
             <?=$product->price?>
         </div>
     </div>
-</div>
+    <div class="info">
 
-<?= \common\widgets\buy::widget(['id' => $product->id]);?>
+    </div>
+</div>
+<?= \yii\helpers\Html::button('В корзину',['class'=>'basket','data-id'=>$product->id]);?>

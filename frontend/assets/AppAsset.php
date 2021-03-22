@@ -15,6 +15,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'ajax/ajax.js',
+        'ajax/ajax.php',
     ];
     public $depends = [
         'yii\web\YiiAsset',
