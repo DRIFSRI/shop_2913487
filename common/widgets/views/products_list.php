@@ -1,27 +1,26 @@
 <?php foreach ($products as $product): ?>
-    <div class="product_wrapp block">
-        <div class="image_wrapper_block" style="width: 1px">
+    <div class="product_list">
+        <div class="image" style="width: 1px">
             <a href=<?="/catalog/".$product->id?>>
                 <img class="img" src=<?=$product->image?>>
             </a>
         </div>
-        <div class="product_info">
-            <div classs="product_title">
+        <div class="info">
+            <div classs="title">
                 <?="{$product->name}" ?>
             </div>
-            <div class="product_price">
+            <div class="price">
                 <?="{$product->price}"?>
             </div>
         </div>
         <?= \yii\helpers\Html::button('В корзину',['class'=>'basket','data-id'=>$product->id]);?>
     </div>
 <?php endforeach;?>
+
 <?php
 $js = <<<JS
-        
     $(function() {
         var list = $('button.basket');
-        
         $(document).on('click', 'button.basket', function(){
             console.log('==this==', this.dataset.id);
             $.ajax({
@@ -39,6 +38,9 @@ $js = <<<JS
                     console.log('error ==data==', data);
                 }
             })
+            
+            
+
         })
     });
 JS;

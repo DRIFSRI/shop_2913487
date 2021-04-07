@@ -20,7 +20,7 @@ class basket extends Widget
     {
         $this->user_id=$user_id;
     }
-    /**
+    /*
      * @return string
      */
     public function run()

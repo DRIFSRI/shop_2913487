@@ -11,6 +11,9 @@ use yii\data\Pagination;
 use yii\web\Controller;
 class CatalogController extends Controller
 {
+    /*
+     * @return mixed
+     */
     public function actionIndex()
     {
         $query = Products::find();
@@ -18,7 +21,6 @@ class CatalogController extends Controller
             'defaultPageSize' => 6,
             'totalCount' => $query->count(),
         ]);
-
         $products = $query->limit($pagination->limit)->offset($pagination->offset)->all();
 
         return $this->render('index.php', [
@@ -27,9 +29,13 @@ class CatalogController extends Controller
         ]);
     }
 
-    public function actionSearch($id)
+    /*
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionCardProduct($id)
     {
         $product = Products::findOne($id);
-            return $this->render('ProductSearch',['product'=>$product]);
+            return $this->render('CardProduct',['product'=>$product]);
     }
 }

@@ -29,20 +29,28 @@ class ProductController extends Controller
             'totalCount' => $query->count(),
         ]);
         $products = Products::find()->limit($pagination->limit)->offset($pagination->offset)->all();
+
         return $this->render('ActiveRecord', [
             'products' => $products,
             'pagination' => $pagination,
         ]);
     }
 
+    /*
+     * @return mixed
+     */
     public function actionSearch($id)
     {
 //        $product=Product::find()->where('id=1')->all();
         $product = Products::findOne($id);
 //        var_dump($product);
+
         return $this->render('ProductView',['product'=>$product]);
     }
 
+    /*
+     * @return mixed
+     */
     private function ActiveRecord()
     {
         $products = Products::find()->limit($pagination->limit)->offset($pagination->offset)->all();

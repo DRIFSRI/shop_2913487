@@ -29,6 +29,6 @@ class buy extends Widget
             'id'=>$this->id,
             'nameButton'=>$this->nameButton,
             'classButton'=>$this->classButton
-        ]);
+                      ]);
     }
 }

@@ -13,7 +13,7 @@ use Yii;
  *
  * @property User $user0
  * @property BasketsProducts[] $basketsProducts
- * @property Products[] $products
+ *          @property Products[] $products
  */
 class Baskets extends \yii\db\ActiveRecord
 {

@@ -30,22 +30,22 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
+            'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     //Menu
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        /*['label' => 'Home', 'url' => ['/site/index']],*/
+        /*['label' => 'About', 'url' => ['/site/about']],*/
+        /*['label' => 'Contact', 'url' => ['/site/contact']],*/
         ['label' => 'Корзина', 'url' => ['/basket']],
         ['label' => 'Католог', 'url' => ['/catalog']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        /*$menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];*/
+        /*$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];*/
     } else {
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
@@ -62,7 +62,9 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
+    <div class="container">
+        <?= \common\widgets\RoutePage::widget(['route'=>Yii::$app->request->url]);?><div></div>
+    </div>
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
