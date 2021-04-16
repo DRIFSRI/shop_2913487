@@ -122,9 +122,16 @@ a.desc:after {
 
 
 /*catalog*/
-.catalog_item
+.product_list
 {
-    display:flex;
+    display: flex;
+
+}
+
+.product_list .product
+{
+
+    border: 1px solid black;
 }
 .product_title{
     /*overflow: hidden;*/
@@ -155,7 +162,6 @@ a.desc:after {
     flex-direction: row;
     justify-content: space-between;
 
-    
     background: aqua;
     border: 1px solid red;
     border-top: 0px;
@@ -166,6 +172,7 @@ a.desc:after {
     margin-right: 1px;
 }
 .basket_list .product .price{
+    display: inline-block;
 }
 .basket_list .product .title
 {

@@ -40,7 +40,7 @@
                 <?= \yii\bootstrap\Html::Button('+',['class'=>'btn-plus','data-id'=>$product->id,'data-change'=>1]) ?>
             </div>
             <div class="sum_price" >
-                <?=$product->price * $product->count?>
+                JSCODE
             </div>
             <div class="get">
                 <?= \yii\bootstrap\Html::Button('delete',['class'=>'btn-delete','data-id'=>$product->id])?>
@@ -54,7 +54,7 @@
                     Итоговая цена:
                 </div>
                 <div class = 'number'>
-                    <?=array_sum(array_column($order,'price'));?>
+                    JSCODE
                 </div>
             </div>
         </div>
@@ -65,18 +65,16 @@
 <?php
 $js = <<<JS
 function updatePage() {
-    var array2=$('.product');
-            console.log(array2);
-            
-    $('.total_price .number')[0].innerText='';
-    $.each(array2,function(key,value){
-        $('.total_price .number')[0].innerText=parseInt($('.total_price .number')[0].innerText)+
-        value.getElementsByClassName( 'sum_price')[0].innerText=value.getElementsByClassName( 'number')[0].innerText * value.getElementsByClassName( 'count')[0].innerText;
-        console.log(key);
-    })
-    
+    var sum=0;
+    $.each($('.product'),function(key,value){
+        
+console.log('key,value', key, value);        
+        sum+=value.getElementsByClassName( 'sum_price')[0].innerText
+        =value.getElementsByClassName( 'number')[0].innerText * value.getElementsByClassName( 'count')[0].innerText;
+    })    
+        $('.total_price .number')[0].innerText=sum;
 }
-
+updatePage();
     $(function() {
         $(document).on('click', '.btn-plus,.btn-minus', function(){
             console.log('==this==', this.dataset.id);

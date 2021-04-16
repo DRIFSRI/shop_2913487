@@ -61,7 +61,7 @@ return [
             'showScriptName' => false,
             'rules' => [
 //                '<controller:(catalog)>/<id:\d+>/<action:(create|update|delete|search)>' => '<controller>/<action>',
-                '<controller:(catalog)>/<id:\d+>' => '<controller>/search',
+                '<controller:(catalog)>/<id:\d+>' => '<controller>/<CardProduct>',
             ],
         ],
 
