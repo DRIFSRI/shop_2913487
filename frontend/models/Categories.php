@@ -31,7 +31,8 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent_id'], 'integer'],
+            [['parent_id']
+                , 'integer'],
             [['name'], 'string', 'max' => 10],
             [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['parent_id' => 'id']],
         ];

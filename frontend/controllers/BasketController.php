@@ -3,6 +3,8 @@ namespace frontend\controllers;
 use app\models\Baskets;
 use app\models\BasketsProducts;
 use yii\web\Controller;
+
+//Контроллер корзины
 class BasketController extends Controller
 {
     /*
@@ -10,10 +12,7 @@ class BasketController extends Controller
      */
     public function actionIndex()
     {
-
-        $basket = Baskets::findOne(4);
-        $products =$basket->products;
-
-        return $this->render('index',['order'=>$products]);
+        $basket_id= $_COOKIE['basket_id'];
+        return $this->render('index',['basket_id'=>$basket_id]);
     }
 }

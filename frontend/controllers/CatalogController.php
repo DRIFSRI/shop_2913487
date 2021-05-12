@@ -10,10 +10,11 @@ use app\models\Products;
 use yii\data\Pagination;
 use yii\web\Controller;
 
-
+//Контролер Католога
 class CatalogController extends Controller
 {
     /*
+     * Отображение Каталога
      * @return mixed
      */
     public function actionIndex()
@@ -25,14 +26,13 @@ class CatalogController extends Controller
         ]);
         $products = $query->limit($pagination->limit)->offset($pagination->offset)->all();
 //        echo '=<pre>', var_dump($products), "</pre>=\n<br>";
-
-
         return $this->render('index.php', [
             'products' => $products,
             'pagination' => $pagination,
         ]);
     }
     /*
+     *
      * @param integer $id
      * @return mixed
      */
@@ -42,12 +42,12 @@ class CatalogController extends Controller
             return $this->render('CardProduct',['product'=>$product]);
     }
     /*
+     *
      * @param integer $id
      * @return mixed
      */
     public  function PresenceStock($count)
     {
-
         return $this->render(PresenceStock,['count'=>$count]);
     }
 }

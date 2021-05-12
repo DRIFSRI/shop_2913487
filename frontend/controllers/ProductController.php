@@ -11,7 +11,7 @@ use yii\db\Query;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
-
+//Контролер продукта
 class ProductController extends Controller
 {
     //Pattern PATTERN = Pattern.compile("[A-Za-z
@@ -30,22 +30,15 @@ class ProductController extends Controller
         ]);
         $products = Products::find()->limit($pagination->limit)->offset($pagination->offset)->all();
 
+        $dataProvider = new yii\data\ActiveDataProvider([
+            'query' => \app\models\Products::find(),
+        ]);
+
+
         return $this->render('ActiveRecord', [
             'products' => $products,
             'pagination' => $pagination,
         ]);
-    }
-
-    /*
-     * @return mixed
-     */
-    public function actionSearch($id)
-    {
-//        $product=Product::find()->where('id=1')->all();
-        $product = Products::findOne($id);
-//        var_dump($product);
-
-        return $this->render('ProductView',['product'=>$product]);
     }
 
     /*
@@ -63,9 +56,7 @@ class ProductController extends Controller
 
     private function dao()
     {
-//        $subQuery = (new Query())->select('COUNT(*)')->from('parametr');
-//        $query = (new Query)->select(['id', 'count' => $subQuery])->from('product');
-        $products = (new \yii\db\Query())
+            $products = (new \yii\db\Query())
             ->select(['product.name', 'product.price', 'parametr.value'])
             ->leftJoin('parametr_product', 'parametr_product.product_id=id')
             ->leftJoin('parametr', 'parametr_product.parametr_id=parametr.id')

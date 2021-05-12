@@ -47,7 +47,7 @@ AppAsset::register($this);
         /*$menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];*/
         /*$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];*/
     } else {
-        $menuItems[] = '<li>'
+        \common\widgets\RoutePage::$menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -63,7 +63,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
     <div class="container">
-        <?= \common\widgets\RoutePage::widget(['route'=>Yii::$app->request->url]);?><div></div>
+        <?= \common\widgets\RoutePage::widget(['route'=>Yii::$app->request->url]);?>
     </div>
     <div class="container">
         <?= Breadcrumbs::widget([

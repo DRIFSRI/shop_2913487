@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Created by PhpStorm.
@@ -19,6 +20,24 @@ class basket extends Widget
     function init($user_id)
     {
         $this->user_id=$user_id;
+    }
+    /*
+     * @return string
+     */
+    function  Exchangecountproduct($d)
+    {
+//        if(!empty($cd =(new \yii\db\Query())->select(['*'])->from('baskets_products')->where(['baskets_id'=>4,'products_id'=>$id])->all()))
+//        {
+//            \Yii::$app->db->createCommand()->update('baskets_products',['count'=>$count],'baskets_id=4 AND products_id='.$id)->execute();
+//        }
+//        else {
+//            \Yii::$app->db->createCommand()->insert('baskets_products', [
+//                'count' => $count,
+//                'products_id' => $id,
+//                'baskets_id'=>4
+//            ])->execute();
+//        }
+//        return json_encode($count);
     }
     /*
      * @return string

@@ -8,7 +8,6 @@ $params = array_merge(
 
 //echo '=<pre>', var_dump(1111), "</pre>=\n<br>";
 
-
 return [
     'id' => 'app-frontend',
     'name'=>'Shop',
@@ -64,7 +63,6 @@ return [
                 '<controller:(catalog)>/<id:\d+>' => '<controller>/<CardProduct>',
             ],
         ],
-
     ],
     'params' => $params,
 ];

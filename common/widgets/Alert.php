@@ -58,6 +58,8 @@ class Alert extends \yii\bootstrap\Widget
                 continue;
             }
 
+
+
             foreach ((array) $flash as $i => $message) {
                 echo \yii\bootstrap\Alert::widget([
                     'body' => $message,
@@ -68,7 +70,6 @@ class Alert extends \yii\bootstrap\Widget
                     ]),
                 ]);
             }
-
             $session->removeFlash($type);
         }
     }

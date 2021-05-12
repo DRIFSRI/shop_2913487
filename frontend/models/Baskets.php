@@ -1,5 +1,4 @@
 <?php
-
 namespace app\models;
 
 use common\models\User;
@@ -36,6 +35,11 @@ class Baskets extends \yii\db\ActiveRecord
         ];
     }
 
+//    public relation()
+//    {
+//
+//    }
+
     /**
      * {@inheritdoc}
      */
@@ -62,18 +66,18 @@ class Baskets extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getBasketsProducts()
-    {
-        return $this->hasMany(BasketsProducts::className(), ['baskets_id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[Products]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProducts()
-    {
-        return $this->hasMany(Products::className(), ['id' => 'products_id'])->viaTable('baskets_products', ['baskets_id' => 'id']);
-    }
+//    public function getBasketsProducts()
+//    {
+//        return $this->hasMany(BasketsProducts::className(), ['baskets_id' => 'id']);
+//    }
+//
+//    /**
+//     * Gets query for [[Products]].
+//     *
+//     * @return \yii\db\ActiveQuery
+//     */
+//    public function getProducts()
+//    {
+//        return $this->hasMany(Products::className(), ['id' => 'products_id'])->viaTable('baskets_products', ['baskets_id' => 'id']);
+//    }
 }
