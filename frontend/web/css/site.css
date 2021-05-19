@@ -147,49 +147,95 @@ a.desc:after {
     height: 150px;
 }
 
-        /*basket*/
+/*--------------basket-------------------------*/
+.Left_Menu{
+    position: absolute;
+    display: grid;
+    left: 100px;
+    background: #777777;
+    border-radius: 10px;
+    border:1px solid black;
+}
+.Left_Menu a{
+    height: 30px;
+    text-transform: uppercase;
+    color:red;
+    /*text-*/
+}
+.container{
+    border: black 1px solid;
+    background-color: #f6f6f6;
+}
+.Right_Menu {
+    position: absolute;
+    right: 1px;
+    text-align: center;
+}
 .basket_list{
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-    /*justify-content: flex-start;*/
-
-    border: 0px solid black;
-    border-top-width: 1px;
+    border: 1px solid black;
+    background: #eeeeee;
+    padding: 5px;
 }
 .basket_list .product
 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-between;*/
 
-    background: aqua;
-    border: 1px solid red;
-    border-top: 0px;
+    /*background: aqua;*/
+    /*border: 1px solid red;*/
+    /*border-top: 0px;*/
 }
-
-.abs{
-    position: absolute;
-}
-.basket_list .product .sum_price{
+.basket_list .sum_price{
     position: relative;
     right: 0px;
     margin-right: 1px;
 }
-.basket_list .product .price{
-    display: inline-block;
-}
-.basket_list .product .title
-{
-    width: 100%;
-}
 .basket_list .img
 {
-    width: 130px;
+    width: 70px;
 }
 .basket_list .total_price
 {
     display:flex;
     justify-content: flex-end;
-    background: red;
-    border: 1px solid blue;
+}
+.basket .scroll{
+    display:flex;
+}
+.basket .info{
+    display:flex;
+}
+.basket table{
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+    text-align: center;
+
+}
+.basket .id{
+    width: 50px;
+}
+.basket .title{
+    background: url("https://www.regard.ru/img/bg2_sprite.png") no-repeat 0 -245px;
+    height: 30px;
+    color: #777777;
+    }
+.basket th{
+    /*border: 1px solid black;*/
+    border-radius:  0px;
+    text-align: center;
+    background-color: #eeeeee;
+}
+.basket td{
+    border:1px solid black;
+    border-radius:  10px;
+    border-spacing: 10px;
+
+    color: #777777;
+    background-color: #eeeeee;
+    padding: 3px;
 }

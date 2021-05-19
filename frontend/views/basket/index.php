@@ -1,28 +1,41 @@
-<div class="basket">
-    <div classs="basket_title">
-        <?="Корзина №".$basket_id?>
-    </div>
-        <?=$this->render('_list',['basket_id'=>$basket_id]);?>
-    <div css="chech">
-        <div class="total_price">
-            <div class="specification">
-                Итоговая цена:
-            </div>
-            <div class = 'number'>
-                JSCODE
-            </div>
-        </div>
-    </div>
+<div class="Left_Menu">
+    <?php
+    foreach (\app\models\Categories::find()->where('parent_id=1 AND NOT id= 1')->all() as $item) {
+        echo \yii\helpers\Html::a($item['name'],['/']);
+    }
+    ?>
 </div>
 
+<div class = Right_Menu>
+    <div>Рекомендаци</div>
+    <div>Реклам</div>
+    <div>Полезные ссылки</div>
+</div>
 
+<div class=BlockSearch>
+    <?php
+    echo \yii\helpers\Html::textInput('Search','',['type'=>'text','maxlength'=>255,'placeholder'=>"Поиск среди продуктов"]);
+    echo \yii\helpers\Html::button('Найти')?>
+    Например
+    <a href class="underline" id="example_search" >Ноутбук Lenovo</a href>
+</div>
+
+<div class="basket">
+    <?=$this->render('_list',['basket_id'=>$basket_id]);?>
+</div>
 
 <?php
 $js = <<<JS
+
+function insert_in_search(){
+    console.log(this);
+    return false;
+}
 function updatePage(){
     var sum=0;
     $.each($('.product'),function(key,value){
-        // console.log('key,value', key, value);        
+        // console.log('key,value', key, value);
+        console.log(this);        
         sum+=
             value.getElementsByClassName( 'sum_price')[0].innerText
             =value.getElementsByClassName( 'number')[0].innerText * value.getElementsByClassName( 'count')[0].innerText;
@@ -32,13 +45,15 @@ function updatePage(){
 
 updatePage();
 $(function(){
-    $(document).on('click', '.btn-plus,.btn-minus', function(){
+    $(document).on('click','.underline',function(){console.log(this);return false;}
+    );
+    
+    $(document).on('click', '.btn-plus, .btn-minus', function(){
         console.log('==this==', this.dataset.id);
         var id =this.dataset.id;
-        rr = $('div#'+this.dataset.id+' .count')[0];
+        rr = $('#'+this.dataset.id+' .count')[0];
+        console.log(rr);
         // rr.innerText=parseInt(this.dataset.change,10)+parseInt(rr.innerText, 10);//rr+=dataset.change
-        
-        
         $.ajax({
             url: '/ajax/exchangecountproduct',
             method: 'post',
@@ -51,7 +66,7 @@ $(function(){
             datatype:'html',                
             success: function(data) {
                 // console.log('success ==data==', data);
-                $('.basket_list').html(data);    
+                $('.basket').html(data);    
                 updatePage();
             },
             error: function(data) {
@@ -64,6 +79,7 @@ $(function(){
         var id =this.dataset.id;
         $.ajax({
             url: '/ajax/deleteproduct',
+            
             method: 'post',
             cache: false,
             data: {

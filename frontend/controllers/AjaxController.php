@@ -24,6 +24,8 @@ class AjaxController extends Controller
         return json_encode($cd[0]['count']);
     }
 
+
+
     public function actionCheck($ob,$dd)
     {
         if (!isset($_COOKIE['basket_id']) || !(int)$_COOKIE['basket_id'])  {

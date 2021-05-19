@@ -35,10 +35,13 @@ class Baskets extends \yii\db\ActiveRecord
         ];
     }
 
-//    public relation()
-//    {
-//
-//    }
+    public function relations()
+    {
+        return array(
+            'basket'=>array(self::HAS_MANY,'Заказ','basket_id'),
+            'products'=>array(self::MANY_MANY,'Продукты','products_parametrs(baskets_id,products_id)')
+          );
+    }
 
     /**
      * {@inheritdoc}
