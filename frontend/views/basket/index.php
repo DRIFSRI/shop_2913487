@@ -1,32 +1,14 @@
-<div class="Left_Menu">
-    <?php
-    foreach (\app\models\Categories::find()->where('parent_id=1 AND NOT id= 1')->all() as $item) {
-        echo \yii\helpers\Html::a($item['name'],['/']);
-    }
-    ?>
+<div class="title">
+    Корзина
 </div>
+<div class="content">
 
-<div class = Right_Menu>
-    <div>Рекомендаци</div>
-    <div>Реклам</div>
-    <div>Полезные ссылки</div>
+    <div class="basket">
+        <?=$this->render('_list',['basket_id'=>$basket_id]);?>
+    </div>
 </div>
-
-<div class=BlockSearch>
-    <?php
-    echo \yii\helpers\Html::textInput('Search','',['type'=>'text','maxlength'=>255,'placeholder'=>"Поиск среди продуктов"]);
-    echo \yii\helpers\Html::button('Найти')?>
-    Например
-    <a href class="underline" id="example_search" >Ноутбук Lenovo</a href>
-</div>
-
-<div class="basket">
-    <?=$this->render('_list',['basket_id'=>$basket_id]);?>
-</div>
-
 <?php
 $js = <<<JS
-
 function insert_in_search(){
     console.log(this);
     return false;
@@ -42,7 +24,6 @@ function updatePage(){
     });    
     $('.total_price .number')[0].innerText=sum;
 }
-
 updatePage();
 $(function(){
     $(document).on('click','.underline',function(){console.log(this);return false;}
@@ -95,7 +76,6 @@ $(function(){
                 console.log('error ==data==', data);
             }
         });
-        
     });
 });
 JS;
@@ -103,5 +83,4 @@ $this->registerJs(
     $js,
     \yii\web\View::POS_END,
     'myscript'
-);
-?>
+);?>

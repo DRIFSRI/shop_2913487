@@ -37,4 +37,3 @@ echo \yii\grid\GridView::widget([
         ],
     ],
 ]);
-?>

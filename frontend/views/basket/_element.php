@@ -1,16 +1,17 @@
-<th class="id">
+<td class="id">
     <?=$model['products']->id?>
-</th>
-<th class="info">
+</td>
+<td>
     <div class="image">
         <a href=<?="/catalog/".$model['products']->id?>>
             <img class="img" src=<?=$model['products']->image?>>
         </a>
     </div>
-
-    <div class="name">
+</td>
+<td class="info">
+    <a href=<?="/catalog/".$model['products']->id?> class="name underline">
         <?="{$model['products']->name}" ?>
-    </div>
+    </a>
     <div class="parametr">
         <?php
         foreach($model['products']->parametrs as $parametr)
@@ -19,8 +20,8 @@
         }
         ?>
     </div>
-</th>
-<th class="price">
+</td>
+<td class="price">
     <div class="specification">Цена:</div>
     <div class="number"><?="{$model['products']->price}"?></div>
     <div class="scroll">
@@ -28,10 +29,10 @@
         <div class="count" ><?=$model['count']  ?></div>
         <?= \yii\bootstrap\Html::Button('+',['class'=>'btn-plus','data-id'=>$model['products']->id,'data-change'=>1]) ?>
     </div>
-</th>
-<th class="sum_price" >
+</td>
+<td class="sum_price" >
     <?= $model['products']->price*$model['count']?>
-</th>
-<th class="get">
+</td>
+<td class="get">
     <?=\yii\bootstrap\Html::Button('delete',['class'=>'btn-delete','data-id'=>$model['products']->id])?>
-</th>
+</td>

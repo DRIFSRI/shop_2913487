@@ -32,17 +32,16 @@ class CatalogController extends Controller
         ]);
     }
     /*
-     *
      * @param integer $id
      * @return mixed
      */
-    public function actionCardproduct($id=1)
+    public function actionCardproduct($id)
     {
+
         $product = Products::findOne($id);
             return $this->render('CardProduct',['product'=>$product]);
     }
     /*
-     *
      * @param integer $id
      * @return mixed
      */

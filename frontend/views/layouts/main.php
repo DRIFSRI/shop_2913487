@@ -25,24 +25,16 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
 <div class="wrap">
     <?php
     NavBar::begin([
         'brandLabel' => Yii::$app->name,
             'brandUrl' => Yii::$app->homeUrl,
         'options' => [
+
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
-    //Menu
-    $menuItems = [
-        /*['label' => 'Home', 'url' => ['/site/index']],*/
-        /*['label' => 'About', 'url' => ['/site/about']],*/
-        /*['label' => 'Contact', 'url' => ['/site/contact']],*/
-        ['label' => 'Корзина', 'url' => ['/basket']],
-        ['label' => 'Католог', 'url' => ['/catalog']],
-    ];
     if (Yii::$app->user->isGuest) {
         /*$menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];*/
         /*$menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];*/
@@ -58,18 +50,45 @@ AppAsset::register($this);
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menuItems,
+        'items' => \common\widgets\RoutePage::$menuItems,
     ]);
     NavBar::end();
     ?>
+<!--маршут-->
     <div class="container">
         <?= \common\widgets\RoutePage::widget(['route'=>Yii::$app->request->url]);?>
     </div>
+<!--маршут-->
+
     <div class="container">
+        <!-- Breadcrubs-->
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <!--Breadcrubs-->
+    <!--alert-->
         <?= Alert::widget() ?>
+<!--Основной контент-->
+        <div class="Left_Menu">
+            <?php
+            foreach (\app\models\Categories::find()->where('parent_id=1 AND NOT id= 1')->all() as $item) {
+                echo \yii\helpers\Html::a($item['name'],['/']);
+            }
+            ?>
+        </div>
+
+        <div class = Right_Menu>
+            <div>Рекомендаци</div>
+            <div>Реклама</div>
+            <div>Полезные ссылки</div>
+        </div>
+        <div class=BlockSearch>
+            <?php
+            echo \yii\helpers\Html::textInput('Search','',['type'=>'text','maxlength'=>255,'placeholder'=>"Поиск среди продуктов"]);
+            echo \yii\helpers\Html::button('Найти')?>
+            Например
+            <a href class="underline" id="example_search" >Ноутбук Lenovo</a href>
+        </div>
         <?= $content ?>
     </div>
 </div>

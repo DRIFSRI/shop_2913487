@@ -61,6 +61,9 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <?=dirname(__DIR__)?>
+<!--        --><?//echo '<pre>'; var_dump(Yii::$app); echo "</pre>pre>\n<br>";'</pre>'?>
+
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>

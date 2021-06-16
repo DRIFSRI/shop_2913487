@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use app\models\Products;
@@ -11,6 +12,7 @@ use yii\db\Query;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\data\Pagination;
+
 //Контролер продукта
 class ProductController extends Controller
 {
@@ -56,7 +58,7 @@ class ProductController extends Controller
 
     private function dao()
     {
-            $products = (new \yii\db\Query())
+        $products = (new \yii\db\Query())
             ->select(['product.name', 'product.price', 'parametr.value'])
             ->leftJoin('parametr_product', 'parametr_product.product_id=id')
             ->leftJoin('parametr', 'parametr_product.parametr_id=parametr.id')

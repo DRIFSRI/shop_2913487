@@ -2,40 +2,33 @@ html,
 body {
     height: 100%;
 }
-
 .wrap {
     min-height: 100%;
     height: auto;
     margin: 0 auto -60px;
     padding: 0 0 60px;
 }
-
 .wrap > .container {
     padding: 70px 15px 20px;
 }
-
 .footer {
     height: 60px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px;
 }
-
 .jumbotron {
     text-align: center;
     background-color: transparent;
 }
-
 .jumbotron .btn {
     font-size: 21px;
     padding: 14px 24px;
 }
-
 .not-set {
     color: #c55;
     font-style: italic;
 }
-
 /* add sorting icons to gridview sort links */
 a.asc:after, a.desc:after {
     position: relative;
@@ -47,47 +40,36 @@ a.asc:after, a.desc:after {
     line-height: 1;
     padding-left: 5px;
 }
-
-
 a.asc:after {
     content: "\e151";
 }
-
 a.desc:after {
     content: "\e152";
 }
-
 .sort-numerical a.asc:after {
     content: "\e153";
 }
-
 .sort-numerical a.desc:after {
     content: "\e154";
 }
-
 .sort-ordinal a.asc:after {
     content: "\e155";
 }
-
 .sort-ordinal a.desc:after {
     content: "\e156";
 }
-
 .grid-view td {
     white-space: nowrap;
 }
-
 .grid-view .filters input,
 .grid-view .filters select {
     min-width: 50px;
 }
-
 .hint-block {
     display: block;
     margin-top: 5px;
     color: #999;
 }
-
 .error-summary {
     color: #a94442;
     background: #fdf7f7;
@@ -95,13 +77,11 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
-
 /* align the logout "link" (button in form) of the navbar */
 .nav li > form > button.logout {
     padding: 15px;
     border: none;
 }
-
 @media(max-width:767px) {
     .nav li > form > button.logout {
         display:block;
@@ -110,27 +90,23 @@ a.desc:after {
         padding: 10px 15px;
     }
 }
-
 .nav > li > form > button.logout:focus,
 .nav > li > form > button.logout:hover {
     text-decoration: none;
 }
-
 .nav > li > form > button.logout:focus {
     outline: none;
 }
-
-
-/*catalog*/
-.product_list
-{
-    display: flex;
-
+/*My */
+.container{
+    border: black 1px solid;
+    /*background-color: #f6f6f6;*/
 }
-
-.product_list .product
-{
-
+/*catalog*/
+.product_list{
+    display: flex;
+}
+.product_list .product{
     border: 1px solid black;
 }
 .product_title{
@@ -142,100 +118,132 @@ a.desc:after {
     /*-webkit-box-orient: vertical;*/
     /*white-space: normal;*/
 }
-.product_list .img {
+.product_list .img{
     width: 100px;
     height: 150px;
 }
-
-/*--------------basket-------------------------*/
+/*-----------------Class-Text-Decarate-----------------------*/
+.underline{
+    border-bottom: 1px black dashed;
+}
+a .underline{
+    display: inline;
+}
+/*--------------Menu-------------------------*/
 .Left_Menu{
     position: absolute;
     display: grid;
     left: 100px;
-    background: #777777;
+    background: #f6f6f6;
     border-radius: 10px;
     border:1px solid black;
+    margin: 10px;
+    padding: 5px 5px 0px 5px;
+    width: 150px;
+    border-collapse:collapse ;
 }
 .Left_Menu a{
-    height: 30px;
+    height: 40px;
     text-transform: uppercase;
     color:red;
-    /*text-*/
+    text-blink: true;
+    border-bottom: #d2d2d221 1px solid;
+    padding: 10px;
 }
-.container{
-    border: black 1px solid;
-    background-color: #f6f6f6;
-}
-.Right_Menu {
+.Right_Menu{
     position: absolute;
     right: 1px;
     text-align: center;
 }
-.basket_list{
-    border: 1px solid black;
-    background: #eeeeee;
+.title{
+    background: linear-gradient(blue,blue,blue,blue,blue, blue,#eeeeee);
+    /*border: 1px solid #f6f6f6;*/
+    border-radius: 10px 10px 0px 0px;
+    text-transform: uppercase;
+    height: 30px;
+    color: white;
+    padding: 4px 0px 0px 5px;
+}
+/**********Basket**************/
+.basket{
+    border: 1px solid #d2d2d2;
+    /*border-top:0px;*/
+    background-color: #f6f6f6;
     padding: 5px;
 }
-.basket_list .product
-{
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*justify-content: space-between;*/
-
-    /*background: aqua;*/
-    /*border: 1px solid red;*/
-    /*border-top: 0px;*/
+.basket table{
+    display: table;
+    text-align: center;
+    /*margin: 10px;*/
+    width: 100%;
 }
-.basket_list .sum_price{
+.basket table th{
+    padding: 3px;
+    color: #777777;
+    text-align: center;
+}
+.basket table tr th span{
+    background-color: #eeeeee;
+    border: 1px solid #d2d2d2;
+    border-radius:10px;
+    display: block;
+    color:#777;
+    padding: 3px;
+}
+.basket table td{
+    text-align: center;
+    border-bottom: 1px solid #d2d2d2;
+}
+.basket table .id{
+    width: 50px;
+}
+/*Наименование */
+.basket table .info{
+    text-align: left;
+}
+/*Картинка-*/
+.basket table .img{
+    width: 60px;
+    height: 60px;
+}
+.basket table .image:before{
+    background: grey;
+    opacity: 0.07;
+    content: "";
+    width: 60px;
+    height: 60px;
+    position: absolute;
+}
+/*кол-во*/
+.basket table .scroll{
+    display:flex;
+}
+.basket table .count{
+    width: 30px;
+    padding: 5px;
+}
+/*Цена*/
+.basket table .sum_price{
     position: relative;
     right: 0px;
     margin-right: 1px;
 }
-.basket_list .img
-{
-    width: 70px;
-}
-.basket_list .total_price
-{
+.basket .total_price{
     display:flex;
     justify-content: flex-end;
 }
-.basket .scroll{
-    display:flex;
-}
-.basket .info{
-    display:flex;
-}
-.basket table{
-    display: table;
+/*Test2*/
+.test2 table {
     border-collapse: separate;
-    box-sizing: border-box;
-    text-indent: initial;
-    border-spacing: 2px;
-    border-color: grey;
-    text-align: center;
-
 }
-.basket .id{
-    width: 50px;
+.test2 table tr{
+    /*background: green;*/
 }
-.basket .title{
-    background: url("https://www.regard.ru/img/bg2_sprite.png") no-repeat 0 -245px;
-    height: 30px;
-    color: #777777;
-    }
-.basket th{
-    /*border: 1px solid black;*/
-    border-radius:  0px;
-    text-align: center;
-    background-color: #eeeeee;
+.test2 table th{
+    padding: 10px;
+    border-radius: 2px  ;
 }
-.basket td{
-    border:1px solid black;
-    border-radius:  10px;
-    border-spacing: 10px;
-
-    color: #777777;
-    background-color: #eeeeee;
-    padding: 3px;
+.test2 table td {
+    padding: 10px;
+    border:solid 1px black;
 }

@@ -10,6 +10,9 @@ class BasketController extends Controller
     public function actionTest(){
         return $this->render('test.php',[]);
     }
+    public function actionTest2(){
+        return $this->render('test2.php',[]);
+}
 
 
     /*

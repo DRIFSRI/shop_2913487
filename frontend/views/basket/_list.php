@@ -1,6 +1,4 @@
-<div class="title">
-    <?="Корзина"?>
-</div>
+
 <?php
     $query = \app\models\BasketsProducts::find()->where(['baskets_id' => $basket_id])->with('products');
     $dataProvider = new \yii\data\ActiveDataProvider([
@@ -9,24 +7,22 @@
             'pageSize' => 5,
         ],
     ]);
-    //echo '888 <pre>'; var_dump($query->all()); echo "</pre>\n<br>";
-    //exit;
-    $fun = function ($model, $key, $index, $widget) {
-        return ['class' => 'product', 'id' => $key['products_id'],'tag'=> 'tr'];
-    };
     $title =
-'<tr class="preambula"><td colspan="7">Товары в корзине </td></tr>
-<tr class="preambula">
-    <td class = id>id</td>
-    <td class = name>Наименование</td>
-    <td class = count>Кол-во</td>
-    <td class = price>Цена,руб</td>
-    <td>X</td>
-</tr>';
-    echo $list = \yii\widgets\ListView::widget([
+        '
+    <tr class="preambula"><th colspan="7"><span>Товары в корзине</span> </th></tr>
+    <tr class="preambula">
+        <th class = id><span>id</span></th>
+        <th class = name colspan="2"><span>Наименование</span></th>
+        <th class = count><span>Количество</span></th>
+        <th class = price><span>Цена,руб</span></th>
+        <th><span>X</span></th>
+    </tr>';
+    echo $list =
+        \yii\widgets\ListView::widget([
         'dataProvider' => $dataProvider,
         'itemView' => '_element',
-        'itemOptions' => $fun,
+        'itemOptions' => function ($model, $key, $index, $widget) {
+        return ['class' => 'product', 'id' => $key['products_id'],'tag'=> 'tr'];},
         'options' => ['class' => 'basket_list','tag'=>'table'],
         'summary' => $title,
 //        'layout'=>"{summary}\n{items}\n{summary}",

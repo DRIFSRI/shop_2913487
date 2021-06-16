@@ -17,9 +17,15 @@ class RoutePage extends Widget
     /*['label' => 'Home', 'url' => ['/site/index']],*/
     /*['label' => 'About', 'url' => ['/site/about']],*/
     /*['label' => 'Contact', 'url' => ['/site/contact']],*/
-['label' => 'Корзина', 'url' => ['/basket']],
-['label' => 'Католог', 'url' => ['/catalog']],
-];
+        ['label' => 'Корзина', 'url' => ['/basket']],
+        ['label' => 'Католог', 'url' => ['/catalog']],
+        ['label' => 'Оплата', 'url' => ['/payment']],
+        ['label' => 'Самовывоз', 'url' => ['/delivery']],
+        ['label' => 'Гарантия', 'url' => ['/guarantee']],
+        ['label' => 'Контакты', 'url' => ['/contacts']],
+        ['label' => 'Login', 'url' => ['/site/login']],
+        ['label' => 'Signup', 'url' => ['/site/signup']]
+    ];
     public function run()
     {
         return $this->render('RoutePage',['route'=>$this->route]);

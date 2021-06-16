@@ -11,7 +11,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'name'=>'Shop',
-//    'homeUrl'=>'',
+    'homeUrl'=>'/catalog',
 
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -60,7 +60,7 @@ return [
             'showScriptName' => false,
             'rules' => [
 //                '<controller:(catalog)>/<id:\d+>/<action:(create|update|delete|search)>' => '<controller>/<action>',
-                '<controller:(catalog)>/<id:\d+>' => '<controller>/<CardProduct>',
+                'catalog/<id:\d+>' => 'catalog/cardproduct',
             ],
         ],
     ],

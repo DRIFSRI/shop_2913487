@@ -7,7 +7,7 @@ $dataProvider = new yii\data\ActiveDataProvider([
         ],
 ]);
 $optionProduct = function ($model, $key, $index, $widget) {
-    return ['class' => 'product', 'id' =>   $key];
+    return ['class' => 'product', 'id' => $key];
 };
 ?>
 
