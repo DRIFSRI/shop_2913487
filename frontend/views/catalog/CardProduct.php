@@ -1,39 +1,26 @@
 <?//= \common\widgets\product_info::widget(['product'=>$product]) ?>
 <?php
-\yii\widgets\DetailView::widget([
+//echo '<pre>'; var_dump($product['id']); echo "</pre>\n<br>";
+
+echo \yii\widgets\DetailView::widget([
     'model'=>$product,
      'attributes'=>[
-         'title','description:html',
+         'id',
+         'price',
          [
-             'label'=>'Owner',
-             'value'=>['ds'],
-             'contentOptions'=>['class'=>'bg-red'],
-             'captionOprions'=>['tooltip'=>'Tooltip'],
+             'label'=>'image',
+             'value'=>$product['image'],
+             'format'=>['image',['width'=>'100','height'=>'100']]
          ],
+        'count',
+        'category_id',
+
+//         [
+//             'label'=>'Owner',
+//             'value'=>['ds'],
+//             'contentOptions'=>['class'=>'bg-red'],
+//             'captionOprions'=>['tooltip'=>'Tooltip'],
+//         ],
          'created_at:datetime',
      ]
     ]);
-
-$dataProvider = new \yii\data\ActiveDataProvider([
-    'query' => Post::find(),
-    'pagination' => [
-        'pageSize' => 20,
-    ],
-]);
-echo \yii\grid\GridView::widget([
-    'dataProvider' => $dataProvider,
-    'columns' => [
-        ['class' => 'yii\grid\SerialColumn'],
-        // Обычные поля определенные данными содержащимися в $dataProvider.
-        // Будут использованы данные из полей модели.
-        'id',
-        'image',
-        // Более сложный пример.
-        [
-            'class' => 'yii\grid\DataColumn', // может быть опущено, поскольку является значением по умолчанию
-            'value' => function ($data) {
-                return $data->image; // $data['name'] для массивов, например, при использовании SqlDataProvider.
-            },
-        ],
-    ],
-]);

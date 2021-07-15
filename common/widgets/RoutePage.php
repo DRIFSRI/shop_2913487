@@ -24,7 +24,7 @@ class RoutePage extends Widget
         ['label' => 'Гарантия', 'url' => ['/guarantee']],
         ['label' => 'Контакты', 'url' => ['/contacts']],
         ['label' => 'Login', 'url' => ['/site/login']],
-        ['label' => 'Signup', 'url' => ['/site/signup']]
+        ['label' => 'Signup', 'url' => ['/site/signup']],
     ];
     public function run()
     {

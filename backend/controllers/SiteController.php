@@ -18,6 +18,7 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
+
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -38,6 +39,7 @@ class SiteController extends Controller
                     'logout' => ['post'],
                 ],
             ],
+
         ];
     }
 

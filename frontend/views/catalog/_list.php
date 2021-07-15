@@ -1,5 +1,5 @@
 <div class="image">
-    <a href=<?="/catalog/".$model->id?>>
+    <a href=<?="/catalog/cardproduct/".$model->id?>>
         <?=\yii\helpers\Html::img($model->image,['class'=>'img'])?>
     </a>
 </div>

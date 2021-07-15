@@ -23,9 +23,6 @@ class AjaxController extends Controller
 //        var_dump(!empty($cd));
         return json_encode($cd[0]['count']);
     }
-
-
-
     public function actionCheck($ob,$dd)
     {
         if (!isset($_COOKIE['basket_id']) || !(int)$_COOKIE['basket_id'])  {
@@ -33,7 +30,6 @@ class AjaxController extends Controller
         }
         return $ob[$dd];
     }
-
     /*
      * Изменение количества продуктов
      * @return mixed
@@ -93,7 +89,6 @@ class AjaxController extends Controller
         ]);
         return $list;
     }
-
     /*
      * Удаление продукта
      * $return mixed

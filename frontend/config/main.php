@@ -59,8 +59,10 @@ return [
             //скрывать index.php
             'showScriptName' => false,
             'rules' => [
-//                '<controller:(catalog)>/<id:\d+>/<action:(create|update|delete|search)>' => '<controller>/<action>',
-                'catalog/<id:\d+>' => 'catalog/cardproduct',
+                '<controller>/<action>' => '<controller>/<action>',
+                'catalog/cardproduct/<id:\d+>' => 'catalog/cardproduct',
+//                '<catalog>/<id>' => '<catalog>',
+                'abc/<id:\d+>' => 'catalog/cardproduct',
             ],
         ],
     ],

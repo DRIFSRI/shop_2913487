@@ -1,15 +1,12 @@
 <?php
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use backend\assets\AppAsset;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -34,9 +31,14 @@ AppAsset::register($this);
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
-    ]);
+        ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Products', 'url' => ['/products']],
+        ['label' => 'Parametrs', 'url' => ['/parametrs']],
+        ['label' => 'Categories', 'url' => ['/categories']],
+        ['label' =>'Basket','url'=>['/baskets']],
+        ['label' => 'RBAC', 'url' => ['/rbac']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -56,27 +58,23 @@ AppAsset::register($this);
     ]);
     NavBar::end();
     ?>
-
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <?=dirname(__DIR__)?>
-<!--        --><?//echo '<pre>'; var_dump(Yii::$app); echo "</pre>pre>\n<br>";'</pre>'?>
-
+        <div class="container">
+            <?= \common\widgets\RoutePage::widget(['route'=>Yii::$app->request->url]);?>
+        </div>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>
 </div>
-
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-
 <?php $this->endBody() ?>
 </body>
 </html>

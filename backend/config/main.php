@@ -37,14 +37,17 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            // что хотим делать с классом, параметры
+            // ЧПУ
             'enablePrettyUrl' => true,
-            'showScriptName' => false,
+//            скрывать index.php
+//            'showScriptName' => false,
             'rules' => [
+
             ],
         ],
-        */
     ],
     'params' => $params,
 ];
