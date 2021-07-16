@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Baskets', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <d>
-<!--        --><?php //this->?>
+
     </d>
 
     <?= GridView::widget([

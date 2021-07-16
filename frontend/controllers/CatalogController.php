@@ -7,6 +7,7 @@
  */
 namespace frontend\controllers;
 use app\models\Products;
+use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\web\Controller;
 
@@ -20,15 +21,14 @@ class CatalogController extends Controller
     public function actionIndex()
     {
         $query = Products::find();
-        $pagination = new Pagination([
-            'defaultPageSize' => 6,
-            'totalCount' => $query->count(),
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 10 ,
+            ],
         ]);
-        $products = $query->limit($pagination->limit)->offset($pagination->offset)->all();
-//        echo '=<pre>', var_dump($products), "</pre>=\n<br>";
         return $this->render('index.php', [
-            'products' => $products,
-            'pagination' => $pagination,
+            'dataProvider' => $dataProvider,
         ]);
     }
     /*
