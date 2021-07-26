@@ -3,6 +3,8 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Products;
 use backend\models\ProductsSearch;
+use yii\bootstrap\ButtonDropdown;
+use yii\bootstrap\Dropdown;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

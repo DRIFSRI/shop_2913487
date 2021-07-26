@@ -1,3 +1,6 @@
+<?php
+$this->title = 'Корзина:';
+$this->params['breadcrumbs'][] = ['label' => 'Корзина', 'url' => ['/basket']];?>
 <div class="title">
     Корзина
 </div>
@@ -9,6 +12,8 @@
 </div>
 <?php
 $js = <<<JS
+    console.log('5');
+
 function insert_in_search(){
     console.log(this);
     return false;

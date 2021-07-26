@@ -14,17 +14,14 @@ class RoutePage extends Widget
 {
     var $route;
     public static $menuItems = [
-    /*['label' => 'Home', 'url' => ['/site/index']],*/
-    /*['label' => 'About', 'url' => ['/site/about']],*/
-    /*['label' => 'Contact', 'url' => ['/site/contact']],*/
-        ['label' => 'Корзина', 'url' => ['/basket']],
-        ['label' => 'Католог', 'url' => ['/catalog']],
-        ['label' => 'Оплата', 'url' => ['/payment']],
-        ['label' => 'Самовывоз', 'url' => ['/delivery']],
-        ['label' => 'Гарантия', 'url' => ['/guarantee']],
-        ['label' => 'Контакты', 'url' => ['/contacts']],
-        ['label' => 'Login', 'url' => ['/site/login']],
-        ['label' => 'Signup', 'url' => ['/site/signup']],
+        ['label' => 'Корзина', 'url' => ['/basket/index']],
+        ['label' => 'Католог', 'url' => ['/catalog/index']],
+        ['label' => 'Оплата', 'url' => ['/payment/index']],
+        ['label' => 'Самовывоз', 'url' => ['/delivery/index']],
+        ['label' => 'Гарантия', 'url' => ['/guarantee/index']],
+        ['label' => 'Контакты', 'url' => ['/contacts/index']],
+//        ['label' => 'Login', 'url' => ['/site/login/index']],
+//        ['label' => 'Signup', 'url' => ['/site/signup/index']],
     ];
     public function run()
     {

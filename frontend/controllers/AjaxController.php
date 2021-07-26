@@ -7,7 +7,6 @@ class AjaxController extends Controller
     {
         $id= $_POST['id'];
         $basket_id = $this->actionCheck($_COOKIE,'basket_id');
-
         if(!empty($cd =(new \yii\db\Query())->select(['*'])->from('baskets_products')->where(['baskets_id'=>$basket_id,'products_id'=>$id])->all()))
         {
             \Yii::$app->db->createCommand()->update('baskets_products',['count'=>$cd[0]['count']+1],'baskets_id='.$basket_id.' AND products_id='.$id)->execute();
@@ -19,8 +18,6 @@ class AjaxController extends Controller
                 'baskets_id'=>$basket_id,
             ])->execute();
         }
-
-//        var_dump(!empty($cd));
         return json_encode($cd[0]['count']);
     }
     public function actionCheck($ob,$dd)

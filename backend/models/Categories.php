@@ -33,7 +33,7 @@ class Categories extends \yii\db\ActiveRecord
         return [
             [['parent_id']
                 , 'integer'],
-            [['name'], 'string', 'max' => 10],
+            [['name'], 'string', 'max' => 20],
             [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categories::className(), 'targetAttribute' => ['parent_id' => 'id']],
         ];
     }

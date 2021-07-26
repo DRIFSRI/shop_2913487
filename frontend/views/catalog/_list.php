@@ -1,6 +1,6 @@
 <div class="image">
-    <a href=<?="/catalog/cardproduct/".$model->id?>>
-        <?=\yii\helpers\Html::img($model->image,['class'=>'img'])?>
+    <a href=<?="/catalog/".$model->id?>>
+        <?=\yii\helpers\Html::img($model->url,['class'=>'img'])?>
     </a>
 </div>
 <div class="rating">

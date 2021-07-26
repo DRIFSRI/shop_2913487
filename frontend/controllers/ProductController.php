@@ -27,7 +27,7 @@ class ProductController extends Controller
     {
         $query = Products::find();
         $pagination = new Pagination([
-            'defaultPageSize' => 6,
+            'defaultPageSize' => 5,
             'totalCount' => $query->count(),
         ]);
         $products = Products::find()->limit($pagination->limit)->offset($pagination->offset)->all();

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use phpDocumentor\Reflection\Types\String_;
 use Yii;
 
 /**
@@ -44,6 +45,7 @@ class Products extends \yii\db\ActiveRecord
         ];
     }
 
+
     /**
      * {@inheritdoc}
      */
@@ -57,6 +59,14 @@ class Products extends \yii\db\ActiveRecord
             'count' => 'Count',
             'category_id' => 'Category ID',
         ];
+    }
+
+
+    /*
+     *@return String_
+     */
+    public function getUrl(){
+        return '/img/Uhd3i7/'.$this->image.'.webp';
     }
 
     /**

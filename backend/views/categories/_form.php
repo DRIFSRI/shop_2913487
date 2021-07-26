@@ -14,7 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'parent_id')->textInput() ?>
+    <?php $aCategories = \yii\helpers\ArrayHelper::map(\backend\models\Categories::find()->all(),'id','name');?>
+
+    <?= $form->field($model, 'parent_id')->dropDownList($aCategories); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

@@ -34,11 +34,13 @@ AppAsset::register($this);
         ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'Products', 'url' => ['/products']],
-        ['label' => 'Parametrs', 'url' => ['/parametrs']],
-        ['label' => 'Categories', 'url' => ['/categories']],
-        ['label' =>'Basket','url'=>['/baskets']],
-        ['label' => 'RBAC', 'url' => ['/rbac']],
+        ['label' => 'Products', 'url' => ['/products/index']],
+        ['label' => 'Parametrs', 'url' => ['/parametrs/index']],
+        ['label' => 'Categories', 'url' => ['/categories/index']],
+        ['label' =>'Basket','url'=>['/baskets/index']],
+        ['label' => 'RBAC', 'url' => ['/rbac/index'],'visible'=>Yii::$app->user->can('admin'),],
+        ['label' => 'Login', 'url' => ['/site/login/index'],'visible'=>Yii::$app->user->isGuest],
+        ['label' => 'Logout', 'url' => ['/site/logout/index'],'visible'=>!Yii::$app->user->isGuest,'linkOptions' => ['data-method' => 'post']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -62,9 +64,6 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
-        <div class="container">
-            <?= \common\widgets\RoutePage::widget(['route'=>Yii::$app->request->url]);?>
-        </div>
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>

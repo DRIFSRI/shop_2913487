@@ -41,7 +41,7 @@ class ProductsSearch extends Products
      */
     public function search($params)
     {
-        $query = Products::find();
+        $query = Products::find()->joinWith('category');
 
         // add conditions that should always apply here
 
@@ -59,7 +59,7 @@ class ProductsSearch extends Products
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            'products.id' => $this->id,
             'price' => $this->price,
             'count' => $this->count,
             'category_id' => $this->category_id,

@@ -4,6 +4,7 @@ $dataProvider = new yii\data\ActiveDataProvider([
     'query' => \app\models\Products::find(),
 ]);
 ?>
+
 <div class="catalog_item">
     <?=\yii\widgets\ListView::widget([
         'dataProvider'=>$dataProvider,

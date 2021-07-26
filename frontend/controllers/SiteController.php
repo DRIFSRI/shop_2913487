@@ -1,10 +1,15 @@
 <?php
 namespace frontend\controllers;
 
+use app\models\Products;
+use common\widgets\SliderProducts;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\data\ActiveDataProvider;
+use yii\data\Pagination;
+use yii\db\ActiveRecord;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -78,7 +83,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $categories_id=20;
+        $limit =2;
+        return $this->render('index',
+            [
+                'categories_id'=>$categories_id,
+                'limit'=>$limit,
+            ]
+        );
     }
 
     /**

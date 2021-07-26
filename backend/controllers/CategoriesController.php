@@ -2,9 +2,11 @@
 
 namespace backend\controllers;
 
+use backend\models\Products;
 use Yii;
 use backend\models\Categories;
 use yii\data\ActiveDataProvider;
+use yii\db\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -136,7 +138,24 @@ class CategoriesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        if(Products::find()->where(['category_id'=>$id])->one())
+        {
+            Yii::$app->session->setFlash('danger',"Невозможно удалить категорию, существуют продукты с данной категорией");
+            return $this->redirect(['index']);
+        }
+        if(Categories::find()->where(['parent_id'=>$id])->one())
+        {
+            Yii::$app->session->setFlash('danger',"Невозможно удалить категорию, существуют подкатегории");
+            return $this->redirect(['index']);
+        }
+
+        try{
+            $this->findModel($id)->delete();
+        }
+        catch(Exception $er){
+            Yii::$app->session->setFlash('danger',"Ошибка при удалении в базе данных, обратитесь к администратору");
+        }
+        Yii::$app->session->setFlash('success',"Категория удалена");
 
         return $this->redirect(['index']);
     }

@@ -4,7 +4,7 @@
 <td>
     <div class="image">
         <a href=<?="/catalog/".$model['products']->id?>>
-            <img class="img" src=<?=$model['products']->image?>>
+            <img class="img" src=<?=$model['products']->url?>>
         </a>
     </div>
 </td>

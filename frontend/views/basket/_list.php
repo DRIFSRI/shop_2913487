@@ -1,4 +1,3 @@
-
 <?php
     $query = \app\models\BasketsProducts::find()->where(['baskets_id' => $basket_id])->with('products');
     $dataProvider = new \yii\data\ActiveDataProvider([

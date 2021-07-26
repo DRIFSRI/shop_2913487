@@ -1,7 +1,10 @@
-<?//= \common\widgets\product_info::widget(['product'=>$product]) ?>
 <?php
-//echo '<pre>'; var_dump($product['id']); echo "</pre>\n<br>";
+$this->title = 'Католог:';
+$this->params['breadcrumbs'][] = ['label' => 'Каталог', 'url' => ['/catalog']];
+$this->params['breadcrumbs'][] = ['label' => 'Карта продукта', 'url' => [$product->id]];
+?>
 
+<?php
 echo \yii\widgets\DetailView::widget([
     'model'=>$product,
      'attributes'=>[
@@ -9,7 +12,7 @@ echo \yii\widgets\DetailView::widget([
          'price',
          [
              'label'=>'image',
-             'value'=>$product['image'],
+             'value'=>$product->url,
              'format'=>['image',['width'=>'100','height'=>'100']]
          ],
         'count',
