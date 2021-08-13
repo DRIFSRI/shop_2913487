@@ -1,9 +1,9 @@
 <?php
-    $query = \app\models\BasketsProducts::find()->where(['baskets_id' => $basket_id])->with('products');
+    $query = \app\models\BasketsProducts::find()->where(['baskets_id' => $basket_id])->joinWith('products');
     $dataProvider = new \yii\data\ActiveDataProvider([
         'query' => ($query),
         'pagination' => [
-            'pageSize' => 5,
+            'pageSize' => 0,
         ],
     ]);
     $title =

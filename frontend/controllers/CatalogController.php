@@ -7,7 +7,7 @@
  */
 namespace frontend\controllers;
 use app\models\Products;
-use backend\models\Categories;
+use app\models\Categories;
 use yii\data\ActiveDataProvider;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -25,7 +25,7 @@ class CatalogController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 10 ,
+                'pageSize' => 4 ,
             ],
         ]);
 
@@ -55,22 +55,24 @@ class CatalogController extends Controller
         if($id === NULL){
             return 1;
         }
-        $query = Products::find()->where(['category_id'=>$id]);
+        $query = \app\models\Categories::getProductsByGroup($id);
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 10 ,
+                'pageSize' => 4 ,
             ],
         ]);
         $model = Categories::find()->where(['id'=>$id])->one();
         return $this->render('index.php', [
             'dataProvider' => $dataProvider,
-            'breadcrumbs'=>[
+            'breadcrusmbs'=>[
                 ['label' => 'Католог', 'url' => ['/catalog']],
                 ['label' => 'Категории', 'url' => ['group']],
                 ['label' => $model->name, 'url' => $model['id']],
             ],
-            'title'=>'Категория',
+            'title'=>'Категория:'.$model->name,
+
         ]);
     }
 

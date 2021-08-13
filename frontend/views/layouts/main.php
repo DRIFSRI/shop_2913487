@@ -59,9 +59,9 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <!--Breadcrubs-->
-    <!--alert-->
+        <!--alert-->
         <?= Alert::widget() ?>
-<!--Основной контент-->
+        <!--Основной контент-->
         <div class="Left_Menu">
             <?php
             foreach (\app\models\Categories::find()->where(['parent_id'=>NUll])->all() as $item) {

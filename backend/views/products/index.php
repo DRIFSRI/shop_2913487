@@ -11,15 +11,12 @@ $this->title = 'Products';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="products-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1><?= Html::encode($this->title)?></h1>
     <p>
         <?php
         echo Html::a('Create Products', ['create'], ['class' => 'btn btn-success']);
         ?>
     </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,

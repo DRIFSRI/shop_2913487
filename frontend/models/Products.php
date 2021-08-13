@@ -45,6 +45,22 @@ class Products extends \yii\db\ActiveRecord
         ];
     }
 
+    public function relations() {
+        return array(
+            'rCategory'=>array(self::BELONGS_TO, 'Categories', 'IDCATEGORY'),
+///            'resType'      => array(self::BELONGS_TO, 'FLFILETYPE', 'IDTYPE'),
+   //         'favorites'    => array(self::HAS_MANY, 'NSFAVORITE', 'IDNEWS'),
+//            'attachedDocs' => array(self::HAS_MANY, 'VDOCSWIDGETATTACHED', ['IDPARENT'=>'ID_EXT'], 'together'=>true, 'on'=>'"attachedDocs"."PUBLIC"=1'),
+            //'subscribe' => array(self::HAS_MANY, 'NSSUBSCRIBE', 'IDNEWS'),
+            /*'subscribe' => array(self::HAS_MANY, 'NSSUBSCRIBEINFO', 'ID',
+                'condition' => 'NS_SUBSCRIBE_TYPE_ID = 4',
+                'joinType' => 'INNER JOIN'),
+            'subscribeCategory' => array(self::HAS_MANY,  'NSSUBSCRIBEINFO', ['ID' =>'IDCATEGORY'],
+                'joinType' => 'INNER JOIN',
+                'select' => 'IDUSER, EMAIL',
+                'condition' => 'NS_SUBSCRIBE_TYPE_ID = ' . $this->subscribeType),*/
+        );
+    }
 
     /**
      * {@inheritdoc}
@@ -98,6 +114,12 @@ class Products extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Categories::className(), ['id' => 'category_id']);
     }
+
+    public function getProducts__()
+    {
+        return $this->hasOne(Products::className(), ['id' => 'products_id']);
+    }
+
 
     /**
      * Gets query for [[ProductsParametrs]].

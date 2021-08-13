@@ -1,9 +1,9 @@
 <?php
 $this->title = $title;
-$this->params['breadcrumbs'] = $breadcrumbs
+$this->params['breadcrumbs'] = $breadcrumbs;
 ?>
 
-<h1>Продукты</h1>
+<h1><?=$title?></h1>
 <?php
 $optionProduct = function ($model, $key, $index, $widget) {
     return ['class' => 'product', 'id' => $key];

@@ -11,7 +11,7 @@ $params = array_merge(
 return [
     'id' => 'app-frontend',
     'name'=>'Shop',
-    'homeUrl'=>'/catalog',
+    'homeUrl'=>'/',
 
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],

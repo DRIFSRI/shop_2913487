@@ -12,8 +12,6 @@ $this->params['breadcrumbs'][] = ['label' => 'Корзина', 'url' => ['/baske
 </div>
 <?php
 $js = <<<JS
-    console.log('5');
-
 function insert_in_search(){
     console.log(this);
     return false;
@@ -21,7 +19,6 @@ function insert_in_search(){
 function updatePage(){
     var sum=0;
     $.each($('.product'),function(key,value){
-        // console.log('key,value', key, value);
         console.log(this);        
         sum+=
             value.getElementsByClassName( 'sum_price')[0].innerText
@@ -51,7 +48,7 @@ $(function(){
             },
             datatype:'html',                
             success: function(data) {
-                // console.log('success ==data==', data);
+                console.log('success ==data==', data);
                 $('.basket').html(data);    
                 updatePage();
             },
